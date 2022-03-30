@@ -1,7 +1,8 @@
 let menuLink = document.querySelectorAll('.menu__link');
-let menuActive = document.querySelector('.menu_active');
+
 for (let i of menuLink) {
     i.onclick = function () {
+        let menuActive = document.querySelector('.menu_active');
         if (menuActive !== null) {
             menuActive.classList.toggle('menu_active');
             if (this.nextElementSibling)
