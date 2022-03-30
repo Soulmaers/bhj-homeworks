@@ -1,20 +1,24 @@
-let menuLink = document.querySelectorAll('.menu__link');
 
-for (let i of menuLink) {
-    i.onclick = function () {
-        let menuActive = document.querySelector('.menu_active');
-        if (menuActive !== null) {
-            menuActive.classList.toggle('menu_active');
-            if (this.nextElementSibling)
-                return false;
-        }
-        if (menuActive !== this.nextElementSibling) {
-            this.nextElementSibling.classList.toggle('menu_active');
-            return false;
+
+const subMenu = document.querySelectorAll('.menu_sub');//нашел все подменю которые открываются и закрываются
+
+
+const arr = Array.from(subMenu);
+arr.forEach(element => {
+    elem = element.closest('.menu__item');//нашел внешний элемент списка
+    subLink = elem.firstElementChild; //внутри элемента списка нашел ссылку
+    subLink.onclick = function () { //добавляем обработчик события только для ссылок у которых есть подменю
+        menuLink = document.querySelector('.menu__link'); //внутри обработчика ссылка по которой клик
+        if (this.nextElementSibling.classList.contains('menu_sub')) {// если подменю которое находится рядом содержит класс ('menu_sub')
+            menuActive = this.nextElementSibling.classList.contains('menu_active');// то ищем открытое подменю
+        } if (!menuActive) {// если открытого подменю нет
+            this.nextElementSibling.classList.add('menu_active');//то добавляем открытое подменю
+        } if (menuActive) { //если активное меню есть
+            this.nextElementSibling.classList.add('menu_active');//то удаляем открытое подменю
         }
     }
-}
-
+    return false;
+})
 
 
 

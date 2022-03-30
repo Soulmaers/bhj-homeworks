@@ -9,16 +9,18 @@ sliderArrowprev.onclick = function () {
     i = arr.findIndex((element) => {
         return element.classList.contains('slider__item_active')
     });
+    arr[i].classList.remove('slider__item_active');
     i = (i > 0) ? i - 1 : arr.length - 1;
-    arr[i].classList.toggle('slider__item_active');
+    arr[i].classList.add('slider__item_active');
 }
 
 sliderArrownext.onclick = function () {
     i = arr.findIndex((element) => {
         return element.classList.contains('slider__item_active')
     });
+    arr[i].classList.remove('slider__item_active');
     i = (i + 1) % arr.length;
-    arr[i].classList.toggle('slider__item_active');
+    arr[i].classList.add('slider__item_active');
 }
 
 
