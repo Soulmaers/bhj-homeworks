@@ -21,6 +21,7 @@ sliderArrownext.onclick = function () {
     arr[i].classList.remove('slider__item_active');
     i = (i + 1) % arr.length;
     arr[i].classList.add('slider__item_active');
+
 }
 
 
