@@ -14,11 +14,9 @@ arr.forEach(element => {
         } if (!menuActive) {// если открытого подменю нет
             this.nextElementSibling.classList.add('menu_active');//то добавляем открытое подменю
         } if (menuActive) { //если активное меню есть
-            this.nextElementSibling.classList.add('menu_active');//то удаляем открытое подменю
+            this.nextElementSibling.classList.remote('menu_active');//то удаляем открытое подменю
         }
     }
     return false;
 })
-
-
 
