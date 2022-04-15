@@ -35,7 +35,6 @@ chatInput.addEventListener('keydown', (el) => {
         el.target.value = '';
     }
 });
-
 const robotMessages = [
     'Добрый день!',
     'Какой у вас вопрос?',
