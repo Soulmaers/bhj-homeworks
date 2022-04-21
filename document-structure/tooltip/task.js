@@ -1,3 +1,4 @@
+
 const hasTooltip = Array.from(document.querySelectorAll('.has-tooltip'));
 
 hasTooltip.forEach(el => {
@@ -14,7 +15,10 @@ hasTooltip.forEach(el => {
         if (activeFind === undefined) {
             hint.classList.add('tooltip_active');
         } else {
-            activeFind.classList.remove('tooltip_active');
+            if (activeFind !== hint) {
+                hint.classList.add("tooltip_active");
+            }
+            activeFind.classList.toggle('tooltip_active');
         }
     }
     )

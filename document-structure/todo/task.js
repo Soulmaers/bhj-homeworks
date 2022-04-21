@@ -5,7 +5,7 @@ const taskList = document.getElementById('tasks__list');
 
 taskAdd.addEventListener('click', (event) => {
     event.preventDefault();
-    if (taskInput.value.length > 0) {
+    if (taskInput.value.trim(length > 0)) {
         const container = document.createElement('div');
         container.classList.add('task');
 
