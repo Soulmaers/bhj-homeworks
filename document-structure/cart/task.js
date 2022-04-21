@@ -27,8 +27,8 @@ buttonAdd.forEach(el => {
     let dataId = product[index].dataset.id;
     let image = product[index].children[1].getAttribute("src");
     let cartProduct = Array.from(cart.children);
-
-    if (!cartProduct.find((elem) => elem.dataset.id === dataId)) {
+    const products = cartProduct.find((item) => item.dataset.id === dataId);
+    if (!products) {
       cart.insertAdjacentHTML(
         "afterBegin",
         `<div class="cart__product" data-id=${dataId}>
@@ -36,7 +36,6 @@ buttonAdd.forEach(el => {
         <div class="cart__product-count">${val}</div></div>`
       );
     } else {
-      const products = cartProduct.find((item) => item.dataset.id === dataId);
       let count = products.querySelector('.cart__product-count');
       let newCount = Number(count.textContent) + Number(val);
       count.innerText = newCount;

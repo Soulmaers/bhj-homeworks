@@ -3,7 +3,8 @@ const taskInput = document.getElementById('task__input');
 const taskAdd = document.getElementById('tasks__add');
 const taskList = document.getElementById('tasks__list');
 
-taskAdd.addEventListener('click', () => {
+taskAdd.addEventListener('click', (event) => {
+    event.preventDefault();
     if (taskInput.value.length > 0) {
         const container = document.createElement('div');
         container.classList.add('task');
