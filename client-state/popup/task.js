@@ -1,40 +1,32 @@
-const modal = document.getElementById("subscribe-modal");
-const modalClose = document.querySelector(".modal__close");
 
-function getCookie(name) {
-    const cookies = document.cookie.split("; ");
+const modalSub = document.getElementById('subscribe-modal');
 
-    for (const cookie of cookies) {
-        const [key, value] = cookie.split("=");
-        if (key === name) {
-            return decodeURIComponent(value);
-        }
+const closeModal = (e) => {
+    if (e.target.classList.contains('modal__close')) {
+        modalSub.classList.remove('modal_active');
+        document.cookie = 'modalclose=close';
     }
+}
+modalSub.addEventListener('click', closeModal);
 
-    return null;
+const getCookie = (name) => {
+    const value = "; " + document.cookie;
+    let parts = value.split("; " + name + "=");
+    if (parts.length === 2) {
+        return parts
+            .pop()
+            .split(";")
+            .shift();
+    }
 }
 
-if (getCookie("status") !== "Modal Was Closed") {
-    modal.classList.add("modal_active");
+
+if (getCookie('modalclose')) {
+    modalSub.classList.remove('modal_active');
+    modalSub.removeEventListener('click', closeModal);
 } else {
-    modal.classList.remove("modal_active");
+    modalSub.classList.add('modal_active');
 }
 
-modalClose.addEventListener("click", () => {
-    modal.classList.remove("modal_active");
-    let name = "status";
-    let value = "Modal Was Closed";
-    document.cookie = encodeURIComponent(name) + "=" + encodeURIComponent(value);
-});
 
-
-
-/*const modal = document.querySelector('.modal');
-const closed = document.querySelector('.modal__close');
-modal.classList.add('modal_active');
-
-closed.addEventListener('click', () => {
-    modal.classList.remove('modal_active');
-})
-document.cookie=*/
 
